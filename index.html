@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Age Calculater</title>
+    <title>Altersrechner</title>
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div class="container">
-    <label for="birthdate">Birthdate:</label>
-    <input type="date" id="birthdate">
+    <label for="birthdate">Geburtsdatum:</label>
+    <input type="date" id="birthdate" onkeyup="if (event.keyCode === 13) calculateAge()">
     <button onclick="calculateAge()">Berechnen</button>
     <div id="result"></div>
+    <div id="detail"></div>
 </div>
 <script src="script.js"></script>
 </body>
