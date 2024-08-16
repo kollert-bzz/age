@@ -8,7 +8,6 @@ function calculateAge() {
         return;
     }
 
-
     const ageInMilliseconds = currentDate - birthdate;
     const ageInSeconds = ageInMilliseconds / 1000;
     const ageInMinutes = ageInSeconds / 60;
@@ -20,34 +19,35 @@ function calculateAge() {
 
     const resultContainer = document.getElementById('result');
     resultContainer.innerHTML = `
-        <p>Alter: ${Math.floor(ageInYears)} Jahre</p>
-        <p>${Math.floor(ageInMonths)} Monate</p>
-        <p>${Math.floor(ageInWeeks)} Wochen</p>
-        <p>${Math.floor(ageInDays)} Tage</p>
-        <p>${Math.floor(ageInHours)} Stunden</p>
-        <p>${Math.floor(ageInMinutes)} Minuten</p>
-        <p>${Math.floor(ageInSeconds)} Sekunden</p>
+        <p>Alter:</p>
+        <p>${Math.floor(ageInYears)} Jahre</p>
+        <p>oder ${Math.floor(ageInMonths)} Monate</p>
+        <p>oder ${Math.floor(ageInWeeks)} Wochen</p>
+        <p>oder ${Math.floor(ageInDays)} Tage</p>
+        <p>oder ${Math.floor(ageInHours)} Stunden</p>
+        <p>oder ${Math.floor(ageInMinutes)} Minuten</p>
+        <p>oder ${Math.floor(ageInSeconds)} Sekunden</p>
     `;
 
     const nextBirthday = new Date(currentDate.getFullYear(), birthdate.getMonth(), birthdate.getDate());
-    if (nextBirthday < currentDate){
-        nextBirthday.setFullYear(nextBirthday.getFullYear() + 1)
-        if (isLeapYear(currentDate.getFullYear() + 1)) {
-            nextBirthday.setDate(nextBirthday.getDate() + 1);
-        }
+    if (nextBirthday < currentDate) {
+        nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
     }
 
-
-
+    if (birthdate.getMonth() === 1 && birthdate.getDate() === 29) {
+        if (!isLeapYear(nextBirthday.getFullYear())) {
+            nextBirthday.setDate(1);
+            nextBirthday.setMonth(2);
+        }
+    }
 
     const timeUntilNextBirthday = nextBirthday - currentDate;
     const daysUntilNextBirthday = timeUntilNextBirthday / (1000 * 60 * 60 * 24);
 
-    const detailContainer = document.getElementById('detail')
+    const detailContainer = document.getElementById('detail');
     detailContainer.innerHTML = `
-    <p>Nächster Geburtstag in ${Math.ceil(daysUntilNextBirthday)} Tagen</p>
-    `
-
+        <p>Nächster Geburtstag in ${Math.ceil(daysUntilNextBirthday)} Tagen</p>
+    `;
 }
 
 function isLeapYear(year) {
