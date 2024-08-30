@@ -14,7 +14,7 @@ function calculateAge() {
     const ageInHours = ageInMinutes / 60;
     const ageInDays = ageInHours / 24;
     const ageInMonths = ageInDays / 30.44;
-    const ageInWeeks = ageInDays * 7;
+    const ageInWeeks = ageInDays / 7;
     const ageInYears = ageInMonths / 12;
 
     const resultContainer = document.getElementById('result');
@@ -46,7 +46,7 @@ function calculateAge() {
 
     const detailContainer = document.getElementById('detail');
     detailContainer.innerHTML = `
-        <p>Nächster Geburtstag in ${Math.ceil(daysUntilNextBirthday)} Tagen</p>
+        <p>Nächster Geburtstag in ${Math.ceil(daysUntilNextBirthday)} Tagen</p>   
     `;
 }
 
