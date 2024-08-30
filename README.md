@@ -1,4 +1,4 @@
-# Alterrechner
+# Altersrechner
 ## Timo Koller
 
 ### Beschreibung
